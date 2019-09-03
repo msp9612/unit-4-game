@@ -1,6 +1,6 @@
 /* Matt Petrower */
 
-.crystals-big {
-    width: 300px;
-    height: 300px;
+.crystal {
+    width: 125px;
+    height: auto;
 }

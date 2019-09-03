@@ -12,10 +12,33 @@
 
 <body>
 
-    <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+    <h1>Crystal Collector</h1>
 
-    <div id="crystals">
-        <!-- <img class="crystals-big" src="assets/images/crystals-big.jpg" alt="Crystals"> -->
+    <p>
+        The goal of Crystal Collector is to match your crystal score with the target number.
+        <br><br>
+        There are four crystals below, each with a specific amount of points. Click on a crystal to add points to your
+        score.
+        <br><br>
+        The value of each crystal is hidden, so be careful⁠—if your total score goes above the target number, you lose!
+    </p>
+
+    <h2>Target number: <span id="target-number"></span></h2>
+    <h2>Crystal score: <span id="crystal-score"></span></h2>
+
+    <br>
+
+    <img class="crystal" src="assets/images/crystal1.png" alt="Crystal 1">
+    <img class="crystal" src="assets/images/crystal2.png" alt="Crystal 2">
+    <img class="crystal" src="assets/images/crystal3.png" alt="Crystal 3">
+    <img class="crystal" src="assets/images/crystal4.png" alt="Crystal 4">
+
+    <br><br>
+
+    <div>
+        Wins: <span id="wins">0</span>
+        <br>
+        Losses: <span id="losses">0</span>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

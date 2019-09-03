@@ -1,37 +1,52 @@
 // Matt Petrower
 
-var targetNumber = 53;
+const targetMin = 19, targetMax = 120;
+const crystalMin = 1, crystalMax = 12;
 
-$("#number-to-guess").text(targetNumber);
+var targetNumber, crystalScore;
+var wins = 0, losses = 0;
 
-var counter = 0;
-var numberOptions = [10, 5, 3, 7];
 
-for (var i = 0; i < numberOptions.length; i++) {
+newGame();
 
-    var imageCrystal = $("<img>");
 
-    imageCrystal.addClass("crystals-big");
-    imageCrystal.attr("src", "assets/images/crystals-big.jpg");
-    // imageCrystal.attr("alt=Crystal");
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+// Starting a new game
+function newGame() {
+    crystalScore = 0;
 
-    $("#crystals").append(imageCrystal);
+    // Random target number
+    targetNumber = Math.floor(Math.random() * (targetMax - targetMin + 1)) + targetMin;
+
+    // Random crystal values
+    $(".crystal").each(function () {
+        $(this).attr("crystal-value", Math.floor(Math.random() * (crystalMax - crystalMin + 1)) + crystalMin);
+
+        // Uncomment the following line to see the crystal values:
+        // console.log($(this).attr("alt") + ": " + $(this).attr("crystal-value"));
+    });
+
+    $("#target-number").text(targetNumber);
+    $("#crystal-score").text(crystalScore);
 }
 
-$(".crystals-big").on("click", function () {
 
-    var crystalValue = ($(this).attr("data-crystalvalue"));
+// Crystal is clicked
+$(".crystal").on("click", function () {
+    crystalScore += parseInt($(this).attr("crystal-value"));
+    $("#crystal-score").text(crystalScore);
 
-    crystalValue = parseInt(crystalValue);
-    counter += crystalValue;
-    alert("New score: " + counter);
-
-    if (counter === targetNumber) {
+    if (crystalScore === targetNumber) {
+        // Player wins
         alert("You win!");
+        wins++;
+        $("#wins").text(wins);
+        newGame()
     }
-    else if (counter >= targetNumber) {
-        alert("You lose!!");
+    else if (crystalScore > targetNumber) {
+        // Player loses
+        alert("You lose.");
+        losses++;
+        $("#losses").text(losses);
+        newGame();
     }
-
 });
